@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaArrowLeft, FaRegClock, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import './LatestPosts.css';
@@ -32,6 +32,7 @@ const extractReadTimeMinutes = (readTimeText) => {
     const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
     return arabicNumbers[parseInt(match[1])] || null;
 };
+
 
 /* ---------------------- */
 /* Pagination Component   */
@@ -123,7 +124,9 @@ const PostCard = ({ post }) => (
                         {post.readTime && (
                             <span className="post-read-time">
                                 <FaRegClock className="read-time-icon" />
-                                {extractReadTimeMinutes(post.readTime)} دقائق للقراءة
+                                <span style={{ margin: '0 6px' }}>
+                                    {extractReadTimeMinutes(post.readTime)} دقائق للقراءة
+                                </span>
                             </span>
                         )}
                         {post.readTime && post.date && <span className="post-separator">•</span>}

@@ -15,7 +15,8 @@ const PAGE_DATA = {
             { icon: <FaUsers />, value: "10K+", label: "قارئ" },
             { icon: <FaTags />, value: "4", label: "تصنيفات" },
             { icon: <FaPenNib />, value: "6", label: "كاتب" }
-        ]
+        ],
+        showStats: true // إضافة خاصية جديدة
     },
     "/about": {
         badge: "من نحن",
@@ -28,12 +29,18 @@ const PAGE_DATA = {
             { icon: <FaFileAlt />, value: "+500", label: "مقالة منشورة" },
             { icon: <FaPenNib />, value: "+50", label: "كاتب خبير" },
             { icon: <FaTags />, value: "+15", label: "تصنيف" }
-        ]
+        ],
+        showStats: true // إضافة خاصية جديدة
     },
     "/blogs": {
         badge: "المدونة",
-        title: <>استكشف <span>كنوز</span> <br /> المعرفة في التصوير</>,
-        desc: "تصفح مقالاتنا المصنفة بعناية واحصل على رؤى قيمة حول أحدث تقنيات التصوير، نصائح عملية، وقصص ملهمة من محترفين في المجال.",
+        title: (
+            <>
+                استكشف <span className="highlight">مقالاتنا</span>
+                <br />
+            </>
+        ),
+        desc: "اكتشف الدروس والرؤى وأفضل الممارسات للتطوير الحديث.",
         primaryBtn: { text: "تصفح جميع المقالات ←", link: "/blogs/all" },
         secondaryBtn: { text: "الصفحة الرئيسية", link: "/", icon: <FaArrowDown style={{ transform: "rotate(180deg)" }} /> },
         stats: [
@@ -41,7 +48,8 @@ const PAGE_DATA = {
             { icon: <FaUsers />, value: "25K+", label: "قارئ نشط" },
             { icon: <FaTags />, value: "8", label: "تصنيفات رئيسية" },
             { icon: <FaPenNib />, value: "12", label: "كاتب محترف" }
-        ]
+        ],
+        showStats: false // إضافة خاصية جديدة لتحديد عدم عرض stats
     }
 };
 
@@ -83,12 +91,14 @@ function Hero() {
                     )}
                 </div>
 
-                {/* Stats */}
-                <div className="row g-3 justify-content-center">
-                    {page.stats.map((stat, idx) => (
-                        <Stat key={idx} {...stat} />
-                    ))}
-                </div>
+                {/* Stats - تظهر فقط إذا كانت showStats = true */}
+                {page.showStats && (
+                    <div className="row g-3 justify-content-center">
+                        {page.stats.map((stat, idx) => (
+                            <Stat key={idx} {...stat} />
+                        ))}
+                    </div>
+                )}
 
             </div>
         </section>

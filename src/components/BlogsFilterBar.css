@@ -1,0 +1,75 @@
+/* Wrapper للخلفية */
+.blogs-filter-wrapper {
+    background: #0F0F0F;
+    /* padding: 30px 0; */
+}
+
+/* الشريط نفسه */
+.blogs-filter-bar {
+    background: #0F0F0F;
+    padding: 20px 25px;
+    border-radius: 14px;
+    direction: rtl;
+    margin: 0%;
+}
+
+/* =========================
+   Categories
+========================= */
+.categories {
+    flex: 1;
+}
+
+.category-pill {
+    background: #111;
+    border: 1px solid #222;
+    color: #ccc;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.category-pill:hover {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.category-pill.active {
+    background: #ff6a00;
+    color: #fff;
+    border-color: #ff6a00;
+}
+
+/* =========================
+   Search
+========================= */
+.search-box {
+    position: relative;
+    min-width: 260px;
+}
+
+.search-box input {
+    width: 100%;
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 999px;
+    padding: 10px 45px 10px 20px;
+    color: #fff;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-box input::placeholder {
+    color: #777;
+}
+
+.search-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    font-size: 14px;
+}

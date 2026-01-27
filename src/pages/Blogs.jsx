@@ -1,18 +1,45 @@
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
+import { useState, useMemo } from "react";
 import LatestPosts from "../components/LatestPosts";
-import Newsletter from "../components/Newsletter";
+import BlogsFilterBar from "../components/BlogsFilterBar";
 import blogData from "../data/blogs";
-import { Categories } from "../components/Categories";
-import Footer from "../components/Footer";
-// import ContactCTA from "../components/latestposts";
-// import Newsletter from "../components/Newsletter";
+
 function Blogs() {
-    const posts = blogData && blogData.posts ? blogData.posts : [];
+    const posts = blogData?.posts || [];
+
+    const [activeCategory, setActiveCategory] = useState("جميع المقالات");
+    const [searchText, setSearchText] = useState("");
+
+    const handleCategoryChange = (category) => {
+        setActiveCategory(category);
+    };
+
+    const handleSearch = (text) => {
+        setSearchText(text);
+    };
+
+    // فلترة + بحث
+    const filteredPosts = useMemo(() => {
+        return posts.filter((post) => {
+            const matchCategory =
+                activeCategory === "جميع المقالات" ||
+                post.category === activeCategory;
+
+            const matchSearch =
+                post.title?.toLowerCase().includes(searchText.toLowerCase()) ||
+                post.excerpt?.toLowerCase().includes(searchText.toLowerCase());
+
+            return matchCategory && matchSearch;
+        });
+    }, [posts, activeCategory, searchText]);
 
     return (
         <>
-           <LatestPosts posts={posts} />
+            <BlogsFilterBar
+                onCategoryChange={handleCategoryChange}
+                onSearch={handleSearch}
+            />
+
+            <LatestPosts posts={filteredPosts} />
         </>
     );
 }

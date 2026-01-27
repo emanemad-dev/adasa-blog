@@ -14,7 +14,7 @@
 
 /* Container */
 .categories-section {
-    background-color: var(--bg-dark);
+    background-color: #111111;
     color: var(--text-light);
     direction: rtl;
 }
