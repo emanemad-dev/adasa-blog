@@ -1,0 +1,144 @@
+/* =======================
+   CSS Variables
+======================= */
+:root {
+    --bg-dark: #0f0f0f;
+    --card-bg: rgba(20, 20, 20, 0.85);
+    --primary-color: #ff7a00;
+    --text-light: #ffffff;
+    --text-secondary: #bbbbbb;
+}
+
+/* =======================
+   Section
+======================= */
+.newsletter-section {
+    background-color: var(--bg-dark);
+    direction: rtl;
+    color: var(--text-light);
+}
+
+/* =======================
+   Card
+======================= */
+.newsletter-card {
+    background-color: var(--card-bg);
+    border-radius: 2rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.5);
+    padding: 3rem 2rem;
+    max-width: 900px;
+    width: 100%;
+}
+
+/* =======================
+   Icon
+======================= */
+.newsletter-icon {
+    background-color: rgba(255, 122, 0, 0.15);
+    padding: 1rem;
+    border-radius: 1rem;
+    display: inline-flex;
+}
+
+.newsletter-icon svg {
+    color: var(--primary-color);
+}
+
+/* =======================
+   Title & Description
+======================= */
+.newsletter-title {
+    font-size: 2rem;
+    color: var(--text-light);
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+.newsletter-desc {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* =======================
+   Form
+======================= */
+.newsletter-form {
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter-input {
+    height: 50px;
+    flex: 3;
+    border-radius: 1rem;
+    background-color: rgba(30, 30, 30, 0.7);
+    border: 1px solid rgba(100, 100, 100, 0.3);
+    color: var(--text-light);
+    padding: 0 1rem;
+}
+
+.newsletter-input::placeholder {
+    color: var(--text-light);
+    opacity: 1;
+}
+
+.newsletter-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(255, 122, 0, 0.25);
+    outline: none;
+}
+
+.newsletter-button {
+    height: 50px;
+    flex: 1;
+    border-radius: 1rem;
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--bg-dark);
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-button:hover {
+    background-color: #e67300;
+}
+
+/* =======================
+   Footer
+======================= */
+.newsletter-footer {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatars {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.avatars img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.newsletter-footer .highlight {
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+/* Same width wrapper */
+.newsletter-form-wrapper,
+.newsletter-footer-wrapper {
+    width: 100%;
+    max-width: 500px;
+    /* نفس العرض */
+    margin: 0 auto;
+}

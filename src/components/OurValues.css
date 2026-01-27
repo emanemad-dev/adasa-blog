@@ -1,0 +1,114 @@
+/* =======================
+   Section
+======================= */
+.our-values {
+    background-color: #111111;
+    /* Dark background */
+    font-family: 'Tajawal', sans-serif;
+    text-align: center;
+    padding: 80px 0;
+    border: 2px solid #2a2a2a;
+}
+
+/* Section Subtitle */
+.section-description {
+    color: #ffffff;
+    display: block;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+/* =======================
+   Section Title with vertical lines
+======================= */
+.values-title {
+    position: relative;
+    display: inline-block;
+    font-size: 48px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+/* Vertical lines on sides of the title */
+.values-title::before,
+.values-title::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    /* Line thickness */
+    background-color: #ff7a00;
+    /* Orange line */
+}
+
+.values-title::before {
+    right: 100%;
+    margin-right: 15px;
+}
+
+.values-title::after {
+    left: 100%;
+    margin-left: 15px;
+}
+
+/* =======================
+   Card
+======================= */
+.value-card {
+    background-color: #161616;
+    border-radius: 12px;
+    border: 1px solid rgba(146, 140, 140, 0.25);
+    /* More visible border */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.value-card:hover {
+    background-color: rgba(255, 122, 0, 0.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+    border-color: rgba(255, 122, 0, 0.35);
+}
+
+/* =======================
+   Icon
+======================= */
+.value-icon {
+    font-size: 42px;
+    color: #ff7a00;
+    margin-bottom: 15px;
+}
+
+/* =======================
+   Title inside card
+======================= */
+.value-card h5 {
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6px;
+    transition: color 0.3s ease;
+}
+
+.value-card:hover h5 {
+    color: #ff7a00;
+}
+
+/* =======================
+   Subtitle inside card
+======================= */
+.value-subtitle {
+    font-size: 14px;
+    color: #ff7a00;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* =======================
+   Description inside card
+======================= */
+.value-card p {
+    font-size: 0.875rem;
+    color: #bbbbbb;
+    margin: 0;
+}
+

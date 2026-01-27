@@ -1,0 +1,112 @@
+/* ===== Navbar Base ===== */
+.navbar-custom {
+    background-color: #161616;
+    border-bottom: 1px solid #2a2a2a;
+    padding: 15px 50px;
+    direction: rtl;
+    z-index: 10;
+}
+
+/* ===== Logo ===== */
+.logo-icon {
+    background: #ff7a00;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255, 122, 0, 0.5);
+}
+
+.logo-title {
+    color: #fff;
+    font-family: 'Tajawal', sans-serif;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0px;
+    line-height: .5;
+}
+
+.logo-slogan {
+    font-size: 11px;
+    color: #ffb366;
+    opacity: 0.9;
+}
+
+/* ===== Nav Links ===== */
+.nav-wrapper {
+    background: #1e1e1e;
+    padding: 8px 25px;
+    border-radius: 50px;
+    border: 1px solid #2a2a2a;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    gap: 1rem;
+}
+
+.nav-pill {
+    color: #ddd;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.nav-pill:hover {
+    background: rgba(255, 122, 0, 0.15);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    background: #ff7a00;
+    color: #fff !important;
+    box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);
+}
+
+/* ===== Buttons ===== */
+.search-btn {
+    background: #1e1e1e;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #2a2a2a;
+    color: #aaa;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background: #2a2a2a;
+    border-color: #ff7a00;
+}
+
+.cta-btn {
+    background: #ff7a00;
+    color: #fff;
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(255, 122, 0, 0.2);
+    transition: 0.3s;
+}
+
+.cta-btn:hover {
+    background: #ff8c1a;
+    transform: translateY(-2px);
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 991px) {
+    .nav-wrapper {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+        border-radius: 20px;
+        padding: 15px;
+    }
+}

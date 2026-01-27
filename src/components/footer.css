@@ -1,0 +1,111 @@
+.footer {
+    background: radial-gradient(circle at top, #1a1a1a, #000);
+    color: #ccc;
+    padding: 60px 40px 20px;
+    direction: rtl;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.footer-col h4 {
+    color: #fff;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.footer-col h4::after {
+    content: "";
+    width: 30px;
+    height: 2px;
+    background: #ff7a00;
+    position: absolute;
+    right: 0;
+    bottom: -8px;
+}
+
+.footer-col p {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.footer-col input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin: 15px 0;
+    background: #111;
+    color: #fff;
+}
+
+.footer-col button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    border: none;
+    background: #ff7a00;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.brand .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.brand .logo span {
+    background: #ff7a00;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.socials svg {
+    background: #111;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.footer-bottom {
+    border-top: 1px solid #222;
+    margin-top: 40px;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
