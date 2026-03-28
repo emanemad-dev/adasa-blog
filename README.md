@@ -168,7 +168,7 @@ npm run build
 npm run preview
 ```
 
-**Live Demo**: Run `npm run dev` and open http://localhost:5173
+**Live Demo**: [https://adasa-blog-one.vercel.app/](https://adasa-blog-one.vercel.app/) or run `npm run dev` and open http://localhost:5173
 
 ## 📸 Screenshots {#screenshots}
 
