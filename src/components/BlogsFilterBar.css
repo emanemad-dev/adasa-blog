@@ -396,3 +396,112 @@
     display: none !important;
     content: none !important;
 }
+
+/* حل نهائي للخط الأبيض */
+.blogs-filter-wrapper {
+    position: sticky;
+    top: 80px;
+    z-index: 99;
+    background: var(--filter-bg);
+    border: 0 !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+    margin-bottom: -1px !important;
+}
+
+.blogs-filter-wrapper::before,
+.blogs-filter-wrapper::after,
+.blogs-filter-wrapper *::before,
+.blogs-filter-wrapper *::after {
+    display: none !important;
+    content: none !important;
+}
+
+.blogs-filter-bar {
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 20px 20px !important;
+}
+
+body,
+html,
+.blogs-filter-wrapper * {
+    border: 0 !important;
+}
+
+/* حل نهائي للخط الأبيض */
+.blogs-filter-wrapper {
+    position: sticky;
+    top: 80px;
+    z-index: 99;
+    background: var(--filter-bg);
+    border: 0 !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+    margin-bottom: -1px !important;
+}
+
+.blogs-filter-wrapper::before,
+.blogs-filter-wrapper::after,
+.blogs-filter-wrapper *::before,
+.blogs-filter-wrapper *::after {
+    display: none !important;
+    content: none !important;
+}
+
+.blogs-filter-bar {
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 20px 20px !important;
+}
+
+body,
+html,
+.blogs-filter-wrapper * {
+    border: 0 !important;
+}
+
+/* حل نهائي للخط الأبيض */
+.blogs-filter-wrapper {
+    position: sticky;
+    top: 80px;
+    z-index: 99;
+    background: var(--filter-bg);
+    border: 0 !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+    margin-bottom: -1px !important;
+}
+
+.blogs-filter-wrapper::before,
+.blogs-filter-wrapper::after,
+.blogs-filter-wrapper *::before,
+.blogs-filter-wrapper *::after {
+    display: none !important;
+    content: none !important;
+}
+
+.blogs-filter-bar {
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 20px 20px !important;
+}
+
+/* منع أي خط من العناصر المحيطة */
+body,
+html,
+.blogs-filter-wrapper * {
+    border: 0 !important;
+}
+
+/* منع الخط من العناصر المجاورة */
+.blogs-filter-wrapper+*,
+*+.blogs-filter-wrapper {
+    margin-top: -1px !important;
+}
