@@ -28,7 +28,7 @@
 - [🤝 Contributing](#contributing)
 - [📄 License](#license)
 
-## Project Overview {#project-overview}
+## Project Overview
 
 **Adasa** is a modern, fully responsive photography blog platform focused on:
 
@@ -39,7 +39,7 @@
 
 Built with React + Vite for blazing fast performance, using static data from `blogs.json` (25+ articles).
 
-## ✨ Key Features {#key-features}
+## ✨ Key Features 
 
 ### ✅ Responsive Design
 
@@ -78,7 +78,7 @@ Built with React + Vite for blazing fast performance, using static data from `bl
 - 📰 Newsletter subscription with localStorage persistence
 - 🔥 Featured/Selected articles section
 
-## 🛠️ Tech Stack {#tech-stack}
+## 🛠️ Tech Stack 
 
 | Category     | Technologies                                               |
 | ------------ | ---------------------------------------------------------- |
@@ -96,8 +96,7 @@ npm i react-router-dom bootstrap react-icons lucide-react
 npm i -D tailwindcss postcss autoprefixer
 ```
 
-## 📁 Project Structure {#project-structure}
-
+## 📁 Project Structure
 ```
 adasa-blog/
 ├── public/           # Static assets
@@ -112,7 +111,7 @@ adasa-blog/
 └── vite.config.js    # Vite config
 ```
 
-## 🎨 Design System {#design-system}
+## 🎨 Design System 
 
 ### Colors
 
@@ -137,7 +136,7 @@ adasa-blog/
 - Glassmorphism effects
 - Animations: fade-in, slide-up, pulse, shake, rotate
 
-## 📱 Responsive Features {#responsive-features}
+## 📱 Responsive Features 
 
 - **Mobile-first** approach
 - Horizontal scroll for categories on small screens
@@ -146,14 +145,12 @@ adasa-blog/
 - Sticky filter bar with scroll-to-top
 - Touch-friendly interactions
 
-## 🌐 Browser Support {#browser-support}
-
+## 🌐 Browser Support
 - Modern browsers: Chrome, Firefox, Safari, Edge
 - ✅ RTL language support
 - ✅ Touch-friendly interactions
 
-## 🚀 Quick Start {#quick-start}
-
+## 🚀 Quick Start 
 ```bash
 # Clone & Install
 git clone <your-repo> adasa-blog
@@ -170,13 +167,7 @@ npm run preview
 
 **Live Demo**: [https://adasa-blog-one.vercel.app/](https://adasa-blog-one.vercel.app/) or run `npm run dev` and open http://localhost:5173
 
-## 📸 Screenshots {#screenshots}
-
-| Home - Hero + Featured                                                    | Blogs - Grid/Filter                                                      | Article Details                                                                    |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
-| ![Home](https://via.placeholder.com/400x250/0F0F0F/ff7a00?text=Home+Hero) | ![Blogs](https://via.placeholder.com/400x250/111/ff7a00?text=Blogs+Grid) | ![Details](https://via.placeholder.com/400x250/1a1a1a/ff7a00?text=Article+Details) |
-
-## 🤝 Contributing {#contributing}
+## 🤝 Contributing 
 
 1. Fork the project
 2. Create feature branch (`blackboxai/feature-name`)
