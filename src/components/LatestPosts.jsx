@@ -133,6 +133,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 const PostCard = ({ post }) => (
     <Link to={`/blog/${post.slug}`} className="post-card-link" key={post.id}>
         <article className="post-card">
+            {/* الصورة لوحدها */}
             <div
                 className="post-image"
                 style={{
@@ -142,6 +143,7 @@ const PostCard = ({ post }) => (
                 }}
             />
 
+            {/* باقي المحتوى في ديف منفصل */}
             <div className="post-content-wrapper">
                 {post.category && (
                     <span className="post-category-badge">{post.category}</span>

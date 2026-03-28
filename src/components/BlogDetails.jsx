@@ -1,5 +1,5 @@
-// BlogDetails.jsx
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react"; // أضف useState
 import blogData from "../data/blogs";
 import {
     FaShare,
@@ -8,35 +8,37 @@ import {
     FaLinkedinIn,
     FaCalendarAlt,
     FaClock,
+    FaCamera,
+    FaArrowLeft,
+    FaRegHeart
 } from "react-icons/fa";
-import "./blogDetails.css";
+import "./BlogDetails.css";
 
 const BlogDetails = ({ post }) => {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+
     if (!post) return null;
 
-    // استخراج العناوين من المحتوى لإنشاء قائمة المحتويات
     const headers = [];
     const contentLines = post.content.split("\n");
 
     contentLines.forEach((line) => {
         if (line.startsWith("## ")) {
             const title = line.slice(3).trim();
-            const id = title
-                .toLowerCase()
-                .replace(/[^\u0600-\u06FFa-z0-9\s-]/g, "")
-                .replace(/\s+/g, "-");
+            const id = title.replace(/\s+/g, "-");
             headers.push({ title, id });
         }
     });
 
-    // مقالات ذات صلة بنفس التصنيف
     const relatedPosts = blogData.posts
         .filter((p) => p.id !== post.id && p.category === post.category)
         .slice(0, 3);
 
     const shareUrl = window.location.href;
 
-    // تنسيق التاريخ بالعربية
     const formatDateArabic = (dateString) => {
         const date = new Date(dateString);
         return date.toLocaleDateString("ar-EG", {
@@ -46,175 +48,313 @@ const BlogDetails = ({ post }) => {
         });
     };
 
-    // معالجة المحتوى وتحويله إلى عناصر React
-    const contentSections = post.content
-        .split("\n\n")
-        .map((section, idx) => {
-            const trimmed = section.trim();
+    const contentSections = post.content.split("\n\n").map((section, idx) => {
+        const trimmed = section.trim();
 
-            if (trimmed.startsWith("## ")) {
-                const title = trimmed.slice(3);
-                const id = title
-                    .toLowerCase()
-                    .replace(/[^\u0600-\u06FFa-z0-9\s-]/g, "")
-                    .replace(/\s+/g, "-");
-
-                return (
-                    <h2 key={idx} id={id} className="section-title">
-                        {title}
-                    </h2>
-                );
-            }
+        if (trimmed.startsWith("## ")) {
+            const title = trimmed.slice(3);
+            const id = title.replace(/\s+/g, "-");
 
             return (
-                <p
-                    key={idx}
-                    className="section-text"
-                    dangerouslySetInnerHTML={{
-                        __html: trimmed.replace(/\n/g, "<br/>"),
-                    }}
-                />
+                <h2 key={idx} id={id} className="section-title">
+                    <FaCamera className="section-icon" />
+                    {title}
+                </h2>
             );
-        });
+        }
 
-    // وظيفة للتمرير السلس
+        return (
+            <p
+                key={idx}
+                className="section-text"
+                dangerouslySetInnerHTML={{
+                    __html: trimmed.replace(/\n/g, "<br/>"),
+                }}
+            />
+        );
+    });
+
     const handleSmoothScroll = (e, id) => {
         e.preventDefault();
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "start" });
-            window.history.pushState(null, null, `#${id}`);
-        }
+        document.getElementById(id)?.scrollIntoView({
+            behavior: "smooth",
+        });
     };
 
-    // وظيفة المشاركة
     const handleShare = () => {
         navigator.clipboard.writeText(shareUrl);
-        alert("تم نسخ رابط المقال!");
+        alert("تم نسخ الرابط ✅");
+    };
+
+    const shareOnTwitter = () => {
+        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(shareUrl)}`;
+        window.open(url, '_blank', 'width=600,height=400');
+    };
+
+    const shareOnFacebook = () => {
+        const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+        window.open(url, '_blank', 'width=600,height=400');
+    };
+
+    const shareOnLinkedin = () => {
+        const url = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(post.title)}`;
+        window.open(url, '_blank', 'width=600,height=400');
+    };
+
+    const handleSubscribe = async (e) => {
+        e.preventDefault();
+
+        if (!email || !email.includes('@')) {
+            setError("يرجى إدخال بريد إلكتروني صحيح");
+            return;
+        }
+
+        setLoading(true);
+        setError("");
+
+        try {
+            const subscriptions = JSON.parse(localStorage.getItem('subscriptions') || '[]');
+
+            if (subscriptions.includes(email)) {
+                setError("هذا البريد مشترك بالفعل");
+                setLoading(false);
+                return;
+            }
+
+            subscriptions.push(email);
+            localStorage.setItem('subscriptions', JSON.stringify(subscriptions));
+
+            alert("تم الاشتراك بنجاح! شكراً لك");
+            setEmail("");
+
+        } catch (err) {
+            setError("حدث خطأ، يرجى المحاولة مرة أخرى");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
         <section className="blog-page" dir="rtl">
             <div className="container">
-                {/* HERO SECTION */}
+
+                {/* HERO */}
                 <div className="hero">
-                    <img src={post.image} alt={post.title} className="hero-img" />
+                    <img src={post.image} className="hero-img" alt={post.title} />
+
                     <div className="hero-overlay"></div>
+
                     <div className="hero-content">
-                        <span className="badge-category">{post.category}</span>
+                        <div className="top-meta">
+                            <span className="badge">{post.category}</span>
+                            <span>
+                                <FaClock /> {post.readTime}
+                            </span>
+                            <span>
+                                <FaCalendarAlt /> {formatDateArabic(post.date)}
+                            </span>
+                        </div>
+
                         <h1>{post.title}</h1>
-                        <div className="hero-meta">
-                            <div className="author">
-                                <img src={post.author.avatar} alt={post.author.name} />
-                                <div>
-                                    <div>{post.author.name}</div>
-                                    <small>{post.author.role}</small>
-                                </div>
+
+                        <div className="author">
+                            <img src={post.author.avatar} alt={post.author.name} />
+                            <div>
+                                <strong>{post.author.name}</strong>
+                                <span>{post.author.role}</span>
                             </div>
-                            <span>
-                                <FaCalendarAlt style={{ marginLeft: "6px" }} />
-                                {formatDateArabic(post.date)}
-                            </span>
-                            <span>
-                                <FaClock style={{ marginLeft: "6px" }} />
-                                {post.readTime}
-                            </span>
                         </div>
                     </div>
                 </div>
 
-                {/* MAIN CONTENT + SIDEBAR */}
-                <div className="row-grid">
-                    {/* MAIN CONTENT */}
-                    <div className="main-col">
+                {/* CONTENT */}
+                <div className="layout">
+                    {/* MAIN */}
+                    <div className="main">
                         <div className="content">{contentSections}</div>
 
                         {/* TAGS */}
-                        {post.tags && post.tags.length > 0 && (
-                            <div className="tags">
-                                {post.tags.map((tag, i) => (
-                                    <span key={i}>{tag}</span>
+                        <div className="tags-section">
+                            <h4 className="tags-title">
+                                <FaCamera className="tags-icon" />
+                                الوسوم
+                            </h4>
+                            <div className="tags-list">
+                                {post.tags?.map((tag, i) => (
+                                    <span key={i} className="tag-item">
+                                        #{tag}
+                                    </span>
                                 ))}
                             </div>
-                        )}
-
-                        {/* SHARE */}
-                        <div className="share">
-                            <button className="share-btn" onClick={handleShare}>
-                                <FaShare />
-                            </button>
-                            <FaTwitter
-                                onClick={() => window.open(`https://twitter.com/intent/tweet?url=${shareUrl}`, "_blank")}
-                                style={{ cursor: "pointer" }}
-                            />
-                            <FaFacebookF
-                                onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, "_blank")}
-                                style={{ cursor: "pointer" }}
-                            />
-                            <FaLinkedinIn
-                                onClick={() => window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}`, "_blank")}
-                                style={{ cursor: "pointer" }}
-                            />
                         </div>
 
-                        {/* AUTHOR BOX */}
-                        <div className="author-box">
-                            <img src={post.author.avatar} alt={post.author.name} />
-                            <div>
-                                <h5>{post.author.name}</h5>
-                                <p>{post.author.bio || post.author.role}</p>
+                        {/* SHARE */}
+                        <div className="share-section">
+                            <h4 className="share-title">
+                                <FaShare className="share-icon" />
+                                شارك المقال
+                            </h4>
+                            <div className="share-buttons">
+                                <button onClick={handleShare} className="share-btn share-more">
+                                    <FaShare />
+                                </button>
+                                <button onClick={shareOnTwitter} className="share-btn twitter">
+                                    <FaTwitter />
+                                </button>
+                                <button onClick={shareOnFacebook} className="share-btn facebook">
+                                    <FaFacebookF />
+                                </button>
+                                <button onClick={shareOnLinkedin} className="share-btn linkedin">
+                                    <FaLinkedinIn />
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* AUTHOR */}
+                        <div className="author-section">
+                            <div className="author-avatar-wrapper">
+                                <img src={post.author.avatar} alt={post.author.name} className="author-avatar-large" />
+                                <div className="author-verified-badge">✓</div>
+                            </div>
+                            <div className="author-info">
+                                <h4 className="author-name-large">{post.author.name}</h4>
+                                <p className="author-role-badge">{post.author.role}</p>
+                                <p className="author-bio">مصور محترف شغوف بمشاركة المعرفة والخبرات في عالم التصوير الفوتوغرافي.</p>
                             </div>
                         </div>
                     </div>
 
                     {/* SIDEBAR */}
-                    <div className="sidebar-col">
-                        <div className="sidebar">
-                            <h5>محتوى المقال</h5>
-                            <ul>
+                    <div className="sidebar">
+                        {/* محتوى المقال */}
+                        <div className="sidebar-section">
+                            <h4 className="sidebar-title">
+                                <span className="title-icon">📑</span>
+                                محتوى المقال
+                            </h4>
+                            <ul className="table-of-contents">
                                 {headers.map((h, i) => (
                                     <li key={i}>
                                         <a
-                                            href={`#${h.id}`}
                                             onClick={(e) => handleSmoothScroll(e, h.id)}
+                                            className="toc-link"
+                                            href="#"
                                         >
-                                            {h.title}
+                                            <span className="toc-number">{i + 1}</span>
+                                            <span className="toc-text">{h.title}</span>
                                         </a>
                                     </li>
                                 ))}
                             </ul>
-                            <div className="subscribe-box">
-                                <p>📬 اشترك ليصلك كل جديد</p>
-                                <button
-                                    className="btn"
-                                    onClick={() => alert("شكراً لاشتراكك! ستصل أحدث المقالات إلى بريدك.")}
-                                >
-                                    اشترك الآن
-                                </button>
+                        </div>
+
+                        {/* وقت القراءة */}
+                        <div className="sidebar-section reading-time-box">
+                            <div className="reading-time-icon">⏱️</div>
+                            <div className="reading-time-content">
+                                <span className="reading-time-label">وقت القراءة</span>
+                                <span className="reading-time-value">{post.readTime}</span>
                             </div>
+                        </div>
+
+                        {/* تاريخ النشر */}
+                        <div className="sidebar-section publish-date-box">
+                            <div className="date-icon">📅</div>
+                            <div className="date-content">
+                                <span className="date-label">تاريخ النشر</span>
+                                <span className="date-value">{formatDateArabic(post.date)}</span>
+                            </div>
+                        </div>
+
+                        {/* نموذج الاشتراك */}
+                        <div className="sidebar-section subscribe-box">
+                            <div className="subscribe-header">
+                                <span className="subscribe-icon">📬</span>
+                                <h4 className="subscribe-title">لا تفوّت جديدنا</h4>
+                            </div>
+                            <p className="subscribe-text">اشترك للحصول على أحدث المقالات</p>
+
+                            <form onSubmit={handleSubscribe} className="subscribe-form">
+                                <input
+                                    type="email"
+                                    placeholder="بريدك الإلكتروني"
+                                    className="subscribe-input"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                    disabled={loading}
+                                />
+                                {error && <div className="subscribe-error">{error}</div>}
+                                <button type="submit" className="subscribe-btn" disabled={loading}>
+                                    {loading ? "جاري الاشتراك..." : "اشترك الآن"}
+                                    {!loading && <span className="btn-arrow">→</span>}
+                                </button>
+                            </form>
+                        </div>
+
+                        {/* زر تصفح المزيد */}
+                        <div className="sidebar-section browse-more">
+                            <button className="browse-more-btn" onClick={() => navigate('/blogs')}>
+                                تصفح المزيد
+                                <span className="btn-icon">📖</span>
+                            </button>
                         </div>
                     </div>
                 </div>
 
                 {/* RELATED POSTS */}
                 {relatedPosts.length > 0 && (
-                    <div className="related">
-                        <h3>مقالات قد تعجبك</h3>
-                        <div className="row">
+                    <div className="related-section">
+
+                        <div className="related-header">
+                            <div>
+                                <h3>
+                                    <FaRegHeart className="related-icon" />
+                                    مقالات قد تعجبك
+                                </h3>
+                                <p>استكشف المزيد من المحتوى المميز</p>
+                            </div>
+
+                            <button className="arrow-btn" onClick={() => navigate("/blogs")}>
+                                عرض الكل
+                                <FaArrowLeft />
+                            </button>
+                        </div>
+
+                        <div className="related-grid">
                             {relatedPosts.map((r) => (
-                                <div className="col-md-4" key={r.id}>
-                                    <Link to={`/blog/${r.slug}`} className="card-related">
-                                        <div
-                                            className="img"
-                                            style={{ backgroundImage: `url(${r.image})` }}
-                                        />
-                                        <h6>{r.title}</h6>
-                                    </Link>
-                                </div>
+                                <Link to={`/blog/${r.slug}`} key={r.id} className="related-card">
+
+                                    {/* IMAGE */}
+                                    <div
+                                        className="related-img"
+                                        style={{ backgroundImage: `url(${r.image})` }}
+                                    >
+                                        <span className="card-badge">{r.category}</span>
+                                    </div>
+
+                                    {/* CONTENT */}
+                                    <div className="related-content">
+                                        <h4>{r.title}</h4>
+
+                                        <div className="card-meta">
+                                            <div className="card-author">
+                                                <img src={r.author.avatar} alt="" />
+                                                <span>{r.author.name}</span>
+                                            </div>
+
+                                            <span>{r.readTime}</span>
+
+                                        </div>
+                                    </div>
+
+                                </Link>
                             ))}
                         </div>
+
                     </div>
                 )}
+
             </div>
         </section>
     );
