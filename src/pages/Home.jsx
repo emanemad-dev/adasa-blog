@@ -9,13 +9,12 @@ import SelectedArticles from "../components/SelectedArticles";
 
 
 function Home() {
-    // استخراج posts من blogData
     const posts = blogData && blogData.posts ? blogData.posts : [];
 
     return (
         <>
             <SelectedArticles posts={posts} />
-            <section className="home-stats py-5 bg-light" dir="rtl">
+            {/* <section className="home-stats py-5 bg-light" dir="rtl">
                 <div className="container">
                     <div className="row g-4 justify-content-center text-center">
                         <div className="col-lg-3 col-md-6">
@@ -40,7 +39,7 @@ function Home() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             <Categories />
             <LatestPosts posts={posts.slice(0, 6)} />
             <Newsletter />

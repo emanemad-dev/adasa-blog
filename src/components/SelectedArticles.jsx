@@ -43,81 +43,83 @@ const SectionHeader = ({ onShowAll }) => (
 );
 
 const PostCard = ({ post, onShowAll }) => (
-    <Link to={`/blog/${post.slug}`} className="post-card-link">
-        <article className="post-card">
+    <div className="post-card-link-wrapper">
+        <Link to={`/blog/${post.slug}`} className="post-card-link">
+            <article className="post-card">
 
-            <div
-                className="post-image"
-                style={{
-                    backgroundImage: `url(${post.image || "/placeholder.jpg"})`
-                }}
-            />
+                <div
+                    className="post-image"
+                    style={{
+                        backgroundImage: `url(${post.image || "/placeholder.jpg"})`
+                    }}
+                />
 
-            <div className="post-content-wrapper">
+                <div className="post-content-wrapper">
 
-                {post.category && (
-                    <span className="post-category-badge">مميز</span>
-                )}
-
-                {post.category && (
-                    <span className="post-category-badge">{post.category}</span>
-                )}
-
-                {post.readTime && (
-                    <div className="post-time-date">
-                        <span className="post-read-time">
-                            <FaRegClock className="read-time-icon" />
-                            {extractReadTimeMinutes(post.readTime)} دقائق للقراءة
-                        </span>
-                    </div>
-                )}
-
-                <div className="post-card-content">
-                    {post.title && (
-                        <h3 className="post-title">
-                            <Link to={`/blog/${post.slug}`}>{post.title}</Link>
-                        </h3>
+                    {post.category && (
+                        <span className="post-category-badge">مميز</span>
                     )}
 
-                    {post.excerpt && (
-                        <p className="post-excerpt">{post.excerpt}</p>
+                    {post.category && (
+                        <span className="post-category-badge">{post.category}</span>
                     )}
-                </div>
 
-                {post.author && (
-                    <div className="post-author">
-                        <div className="author-info">
-
-                            {post.author.avatar && (
-                                <div
-                                    className="author-avatar"
-                                    style={{
-                                        backgroundImage: `url(${post.author.avatar})`
-                                    }}
-                                />
-                            )}
-
-                            <div className="author-details">
-                                {post.author.name && (
-                                    <h4 className="author-name">{post.author.name}</h4>
-                                )}
-                                {post.author.role && (
-                                    <p className="author-role">{post.author.role}</p>
-                                )}
-                            </div>
-
-                            <button className="arrow-btn" onClick={onShowAll}>
-                                عرض جميع المقالات
-                                <FaArrowLeft />
-                            </button>
-
+                    {post.readTime && (
+                        <div className="post-time-date">
+                            <span className="post-read-time">
+                                <FaRegClock className="read-time-icon" style={{ marginLeft: '6px' }} />
+                                {extractReadTimeMinutes(post.readTime)} دقائق للقراءة
+                            </span>
                         </div>
-                    </div>
-                )}
+                    )}
 
-            </div>
-        </article>
-    </Link>
+                    <div className="post-card-content">
+                        {post.title && (
+                            <h3 className="post-title">
+                                <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                            </h3>
+                        )}
+
+                        {post.excerpt && (
+                            <p className="post-excerpt">{post.excerpt}</p>
+                        )}
+                    </div>
+
+                    {post.author && (
+                        <div className="post-author">
+                            <div className="author-info">
+
+                                {post.author.avatar && (
+                                    <div
+                                        className="author-avatar"
+                                        style={{
+                                            backgroundImage: `url(${post.author.avatar})`
+                                        }}
+                                    />
+                                )}
+
+                                <div className="author-details">
+                                    {post.author.name && (
+                                        <h4 className="author-name">{post.author.name}</h4>
+                                    )}
+                                    {post.author.role && (
+                                        <p className="author-role">{post.author.role}</p>
+                                    )}
+                                </div>
+
+                                <button className="arrow-btn" onClick={onShowAll}>
+                                    اقرأ المقال
+                                    <FaArrowLeft />
+                                </button>
+
+                            </div>
+                        </div>
+                    )}
+
+                </div>
+            </article>
+        </Link>
+    </div>
 );
 
 /* ---------------------- */
