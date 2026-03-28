@@ -1,4 +1,4 @@
-[# 🖼️ Adasa - Photography Blog
+ 🖼️ Adasa - Photography Blog
 
 [![React](https://img.shields.io/badge/React-19.0-blue?style=for-the-badge&logo=react)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-7.2-green?style=for-the-badge&logo=vite)](https://vitejs.dev/)
