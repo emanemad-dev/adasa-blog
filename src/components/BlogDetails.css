@@ -1,0 +1,212 @@
+.blog-page {
+    background: #000;
+    color: #fff;
+    padding: 40px 0;
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    height: 70vh;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), #000);
+}
+
+.hero-content {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    max-width: 700px;
+}
+
+.hero-content h1 {
+    font-size: 42px;
+    margin: 15px 0;
+}
+
+.badge-category {
+    background: #ff7a00;
+    padding: 6px 15px;
+    border-radius: 20px;
+}
+
+/* SIDEBAR */
+.sidebar {
+    background: #111;
+    padding: 20px;
+    border-radius: 15px;
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar h5 {
+    color: #ff7a00;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 10px 0;
+}
+
+.sidebar a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    color: #ff7a00;
+}
+
+.subscribe-box {
+    margin-top: 20px;
+    background: #1a1a1a;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.subscribe-box .btn {
+    background: #ff7a00;
+    color: #fff;
+}
+
+/* CONTENT */
+.section-title {
+    color: #ff7a00;
+    margin: 30px 0 10px;
+}
+
+.section-text {
+    color: #ccc;
+    line-height: 1.8;
+}
+
+/* TAGS */
+.tags span {
+    background: #111;
+    border: 1px solid #333;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin: 5px;
+    display: inline-block;
+}
+
+/* SHARE */
+.share {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.share-btn {
+    background: #111;
+    border: 1px solid #333;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+/* AUTHOR */
+.author-box {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background: #111;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.author-box img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+/* RELATED */
+.related h3 {
+    margin-bottom: 20px;
+}
+
+.card-related {
+    display: block;
+    background: #111;
+    border-radius: 15px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.card-related:hover {
+    transform: translateY(-5px);
+}
+
+.card-related .img {
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-related h6 {
+    padding: 10px;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    /* العرض كامل */
+    height: 500px;
+    /* تقدري تغيريها حسب الحاجة */
+    overflow: hidden;
+}
+
+.hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* الصورة تاخد عرض كامل */
+    height: 100%;
+    /* الصورة تاخد ارتفاع الـ hero كامل */
+    object-fit: cover;
+    /* تغطي المساحة بدون تشويه */
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    /* تقدري تغيري اللون والشفافية */
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}

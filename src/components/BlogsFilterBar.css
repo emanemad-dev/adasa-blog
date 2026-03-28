@@ -73,3 +73,36 @@
     color: #777;
     font-size: 14px;
 }
+
+/* View Toggle */
+.view-toggle {
+    display: flex;
+    gap: 4px;
+}
+
+.view-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #333;
+    background: #111;
+    color: #888;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.view-btn:hover {
+    border-color: #ff6a00;
+    color: #ff6a00;
+    background: #1a1a1a;
+}
+
+.view-btn.active {
+    background: #ff6a00;
+    color: #fff;
+    border-color: #ff6a00;
+}

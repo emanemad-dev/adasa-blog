@@ -26,7 +26,6 @@ export default function Newsletter() {
                     احصل على نصائح التصوير الحصرية ودروس جديدة مباشرة في بريدك الإلكتروني
                 </p>
 
-                {/* Form */}
                 <div className="newsletter-form-wrapper mb-4">
                     <div className="newsletter-form d-flex flex-column flex-md-row gap-2">
                         <input

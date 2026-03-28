@@ -5,7 +5,7 @@ import { FaYoutube, FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
 function Footer() {
     return (
         <footer className="footer">
-            <div className="footer-container">
+            <div className="footer-container ">
 
                 {/* Column 1 */}
                 <div className="footer-col brand">
@@ -19,10 +19,10 @@ function Footer() {
                     </p>
 
                     <div className="socials">
-                        <FaYoutube />
-                        <FaLinkedin />
-                        <FaGithub />
-                        <FaTwitter />
+                        <FaYoutube size={40} />
+                        <FaLinkedin size={40} />
+                        <FaGithub size={40} />
+                        <FaTwitter size={40} />
                     </div>
 
                 </div>
@@ -36,10 +36,10 @@ function Footer() {
                         <li>من نحن</li>
                     </ul>
                 </div>
-                
+
 
                 {/* Column 3 */}
-                
+
                 <div className="footer-col">
                     <h4>التصنيفات</h4>
                     <ul>
@@ -54,14 +54,16 @@ function Footer() {
                 <div className="footer-col">
                     <h4>ابقَ على اطلاع</h4>
                     <p>اشترك للحصول على أحدث المقالات والتحديثات.</p>
-                    <input type="email" placeholder="أدخل بريدك الإلكتروني" />
-                    <button>اشترك</button>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="أدخل بريدك الإلكتروني" />
+                        <button>اشترك</button>
+                    </div>
                 </div>
 
             </div>
 
             <div className="footer-bottom">
-                <p>© 2026 عدسة. صُنع بكل ❤️ جميع الحقوق محفوظة.</p>
+                <p>© 2026 عدسة. صُنع بكل <span className="heart">❤️</span> جميع الحقوق محفوظة.</p>
             </div>
         </footer>
     );

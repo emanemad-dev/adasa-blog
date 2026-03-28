@@ -8,6 +8,7 @@ function Blogs() {
 
     const [activeCategory, setActiveCategory] = useState("جميع المقالات");
     const [searchText, setSearchText] = useState("");
+    const [viewMode, setViewMode] = useState("grid");
 
     const handleCategoryChange = (category) => {
         setActiveCategory(category);
@@ -15,6 +16,10 @@ function Blogs() {
 
     const handleSearch = (text) => {
         setSearchText(text);
+    };
+
+    const handleViewChange = (mode) => {
+        setViewMode(mode);
     };
 
     // فلترة + بحث
@@ -37,9 +42,11 @@ function Blogs() {
             <BlogsFilterBar
                 onCategoryChange={handleCategoryChange}
                 onSearch={handleSearch}
+                onViewChange={handleViewChange}
+                viewMode={viewMode}
             />
 
-            <LatestPosts posts={filteredPosts} />
+            <LatestPosts posts={filteredPosts} viewMode={viewMode} />
         </>
     );
 }

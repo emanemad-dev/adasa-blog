@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaArrowLeft, FaRegClock, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import './LatestPosts.css';
@@ -170,7 +170,7 @@ const PostCard = ({ post }) => (
 /* ---------------------- */
 /* Main Component         */
 /* ---------------------- */
-const LatestPosts = ({ posts = [] }) => {
+const LatestPosts = ({ posts = [], viewMode = 'grid' }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const isBlogsPage = location.pathname === '/blogs';
@@ -199,9 +199,16 @@ const LatestPosts = ({ posts = [] }) => {
                     <BlogsHeader postsCount={posts.length} />
                 )}
 
-                <div className={`posts-grid ${isBlogsPage ? 'blogs-grid-layout' : ''}`}>
-                    {currentPosts.map(post => <PostCard key={post.id} post={post} />)}
-                </div>
+                {currentPosts.length === 0 ? (
+                    <div className="no-posts-message text-center py-10">
+                        <h3>لا توجد مقالات لهذه الفئة</h3>
+                        <p>جرب فئة أخرى أو ابحث بكلمات مختلفة</p>
+                    </div>
+                ) : (
+                    <div className={`posts-grid ${isBlogsPage ? 'blogs-grid-layout' : ''} ${viewMode === 'list' ? 'list-view' : ''}`}>
+                        {currentPosts.map(post => <PostCard key={post.id} post={post} />)}
+                    </div>
+                )}
 
                 {isBlogsPage && totalPages > 1 && (
                     <Pagination

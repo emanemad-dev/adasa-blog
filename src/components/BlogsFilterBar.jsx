@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaTh, FaList } from "react-icons/fa";
 import "./BlogsFilterBar.css";
 
 const categories = [
@@ -11,7 +11,7 @@ const categories = [
     "معدات"
 ];
 
-function BlogsFilterBar({ onCategoryChange, onSearch }) {
+function BlogsFilterBar({ onCategoryChange, onSearch, viewMode = 'grid', onViewChange }) {
     const [activeCategory, setActiveCategory] = useState("جميع المقالات");
     const [search, setSearch] = useState("");
 
@@ -53,6 +53,24 @@ function BlogsFilterBar({ onCategoryChange, onSearch }) {
                                 {cat}
                             </button>
                         ))}
+                    </div>
+
+                    {/* View Toggle */}
+                    <div className="view-toggle d-flex gap-2">
+                        <button
+                            className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`}
+                            onClick={() => onViewChange('grid')}
+                            title="شبكة"
+                        >
+                            <FaTh />
+                        </button>
+                        <button
+                            className={`view-btn ${viewMode === 'list' ? 'active' : ''}`}
+                            onClick={() => onViewChange('list')}
+                            title="قائمة"
+                        >
+                            <FaList />
+                        </button>
                     </div>
 
                 </div>

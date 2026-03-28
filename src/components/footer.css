@@ -1,14 +1,40 @@
 .footer {
     background: radial-gradient(circle at top, #1a1a1a, #000);
     color: #ccc;
-    padding: 60px 40px 20px;
+    padding: 40px 20px 20px;
+    margin-top: auto;
     direction: rtl;
+    transition: 0.3s ease;
+}
+
+.footer:hover {
+    background: radial-gradient(circle at top, #222, #000);
 }
 
 .footer-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .footer-col h4::after {
+        right: auto;
+        left: 0;
+    }
+
+    .socials {
+        justify-content: center;
+    }
 }
 
 .footer-col h4 {
@@ -23,8 +49,8 @@
     height: 2px;
     background: #ff7a00;
     position: absolute;
-    right: 0;
     bottom: -8px;
+    right: 0;
 }
 
 .footer-col p {
@@ -34,12 +60,23 @@
 
 .footer-col input {
     width: 100%;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 12px 15px;
+    border-radius: 12px;
     border: none;
-    margin: 15px 0;
-    background: #111;
-    color: #fff;
+    background: #1a1a1a;
+    color: #ff7a00;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.footer-col input::placeholder {
+    opacity: 0.7;
+}
+
+.footer-col input:focus {
+    outline: none;
+    border: 1px solid #ff7a00;
+    box-shadow: 0 0 8px rgba(255, 122, 0, 0.4);
 }
 
 .footer-col button {
@@ -51,6 +88,12 @@
     color: #fff;
     font-size: 15px;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.footer-col button:hover {
+    background: #ff922e;
+    transform: scale(1.05);
 }
 
 .footer-col ul {
@@ -62,6 +105,12 @@
     margin-bottom: 10px;
     font-size: 14px;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.footer-col ul li:hover {
+    color: #ff7a00;
+    transform: translateX(-5px);
 }
 
 .footer-col ul li a {
@@ -92,14 +141,27 @@
     display: flex;
     gap: 15px;
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .socials svg {
-    background: #111;
+    width: 40px;
+    height: 40px;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 12px;
+    background: #1a1a1a;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.socials svg:hover {
+    background: #ff7a00;
+    color: #fff;
+    transform: translateY(-5px) scale(1.1);
 }
 
 .footer-bottom {
@@ -108,4 +170,55 @@
     padding-top: 20px;
     text-align: center;
     font-size: 14px;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter-form input {
+    flex: 1;
+    min-width: 250px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: none;
+    background: #1a1a1a;
+    color: #ff7a00;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form input::placeholder {
+    opacity: 0.7;
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    border: 1px solid #ff7a00;
+    box-shadow: 0 0 8px rgba(255, 122, 0, 0.4);
+}
+
+.newsletter-form button {
+    flex: 0 0 auto;
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    background: #ff7a00;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background: #ff922e;
+    transform: scale(1.05);
+}
+
+.footer-bottom .heart {
+    color: #ff7a00;
 }

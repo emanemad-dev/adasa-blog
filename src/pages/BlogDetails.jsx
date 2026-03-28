@@ -1,21 +1,17 @@
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import LatestPosts from "../components/LatestPosts";
+import { useParams } from "react-router-dom";
+import blogData from "../data/blogs";
 import BlogDetails from "../components/BlogDetails";
-// import blogData from "../data/blogs";
-// import { Categories } from "../components/B";
-// import Newsletter from "../components/Newsletter";
-
+import NotFound from "./NotFound";
 
 function BlogDetailsPage() {
-    // استخراج posts من blogData
-    // const posts = blogData && blogData.posts ? blogData.posts : [];
+    const { slug } = useParams();
+    const post = blogData.posts.find(p => p.slug === slug);
 
-    return (
-        <>
-           <BlogDetails />
-        </>
-    );
+    if (!post) {
+        return <NotFound />;
+    }
+
+    return <BlogDetails post={post} />;
 }
 
 export default BlogDetailsPage;
