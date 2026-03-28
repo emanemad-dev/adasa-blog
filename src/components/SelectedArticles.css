@@ -48,7 +48,7 @@ Selected Articles - Clean Modern Design
     gap: 8px;
     padding: 12px 24px;
     border-radius: 30px;
-    background: #0a0a0a;
+    background: #181818;
     color: #ff7a00;
     border: 2px solid transparent;
     cursor: pointer;
@@ -107,7 +107,7 @@ Selected Articles - Clean Modern Design
 }
 
 .selected-articles .post-card:hover {
-    border-color: #ff7a00;
+    border-color: #161616;
 }
 
 /* ================= IMAGE ================= */

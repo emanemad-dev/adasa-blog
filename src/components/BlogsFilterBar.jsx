@@ -11,12 +11,10 @@ const categories = [
     "معدات"
 ];
 
-function BlogsFilterBar({ onCategoryChange, onSearch, viewMode = 'grid', onViewChange }) {
-    const [activeCategory, setActiveCategory] = useState("جميع المقالات");
-    const [search, setSearch] = useState("");
+function BlogsFilterBar({ activeCategory, onCategoryChange, onSearch, viewMode = 'grid', onViewChange }) {
+    const [search, setSearch] = useState(""); // remove local activeCategory state
 
     const handleCategoryClick = (cat) => {
-        setActiveCategory(cat);
         onCategoryChange?.(cat);
     };
 

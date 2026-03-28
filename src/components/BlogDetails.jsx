@@ -323,8 +323,12 @@ const BlogDetails = ({ post }) => {
 
                         <div className="related-grid">
                             {relatedPosts.map((r) => (
-                                <Link to={`/blog/${r.slug}`} key={r.id} className="related-card">
-
+                                <Link
+                                    to={`/blog/${r.slug}`}
+                                    key={r.id}
+                                    className="related-card"
+                                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                                >
                                     {/* IMAGE */}
                                     <div
                                         className="related-img"
@@ -339,15 +343,12 @@ const BlogDetails = ({ post }) => {
 
                                         <div className="card-meta">
                                             <div className="card-author">
-                                                <img src={r.author.avatar} alt="" />
+                                                <img src={r.author.avatar} alt={r.author.name} />
                                                 <span>{r.author.name}</span>
                                             </div>
-
                                             <span>{r.readTime}</span>
-
                                         </div>
                                     </div>
-
                                 </Link>
                             ))}
                         </div>

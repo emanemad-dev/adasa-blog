@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Categories } from "../components/Categories";
-import { posts as allPosts } from "../data/posts";
+import blogData from "../data/blogs";
 import PostCard from "../components/PostCard";
 
 export default function Blogs() {
@@ -11,6 +11,7 @@ export default function Blogs() {
 
     const [selectedCategory, setSelectedCategory] = useState(categoryFromQuery);
 
+    const allPosts = blogData.posts || [];
     const filteredPosts = selectedCategory
         ? allPosts.filter((post) => post.category === selectedCategory)
         : allPosts;

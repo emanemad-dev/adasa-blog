@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import LatestPosts from "../components/LatestPosts";
 import BlogsFilterBar from "../components/BlogsFilterBar";
 import blogData from "../data/blogs";
@@ -6,13 +7,25 @@ import blogData from "../data/blogs";
 function Blogs() {
     const posts = blogData?.posts || [];
 
-    const [activeCategory, setActiveCategory] = useState("جميع المقالات");
+    const [searchParams, setSearchParams] = useSearchParams();
+    const navigate = useNavigate();
+    const categoryFromQuery = searchParams.get("category") || "جميع المقالات";
+    const [activeCategory, setActiveCategory] = useState(categoryFromQuery);
     const [searchText, setSearchText] = useState("");
     const [viewMode, setViewMode] = useState("grid");
 
     const handleCategoryChange = (category) => {
         setActiveCategory(category);
+        if (category !== "جميع المقالات") {
+            navigate(`/blogs?category=${encodeURIComponent(category)}`);
+        } else {
+            navigate("/blogs");
+        }
     };
+
+    useEffect(() => {
+        setActiveCategory(categoryFromQuery);
+    }, [categoryFromQuery]);
 
     const handleSearch = (text) => {
         setSearchText(text);
@@ -40,6 +53,7 @@ function Blogs() {
     return (
         <>
             <BlogsFilterBar
+                activeCategory={activeCategory}
                 onCategoryChange={handleCategoryChange}
                 onSearch={handleSearch}
                 onViewChange={handleViewChange}
