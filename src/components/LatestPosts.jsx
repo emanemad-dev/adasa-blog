@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { FaArrowLeft, FaRegClock, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
-import './LatestPosts.css';
+import React, { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import {
+    FaArrowLeft,
+    FaRegClock,
+    FaChevronRight,
+    FaChevronLeft,
+} from "react-icons/fa";
+import "./LatestPosts.css";
 
 /* ---------------------- */
 /* Helper Functions       */
@@ -13,13 +18,31 @@ const formatDateArabic = (dateString) => {
     const month = date.getMonth();
     const year = date.getFullYear();
 
-    const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
-    const arabicDay = day.toString().split('').map(d => arabicNumbers[parseInt(d)]).join('');
-    const arabicYear = year.toString().split('').map(y => arabicNumbers[parseInt(y)]).join('');
+    const arabicNumbers = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
+    const arabicDay = day
+        .toString()
+        .split("")
+        .map((d) => arabicNumbers[parseInt(d)])
+        .join("");
+    const arabicYear = year
+        .toString()
+        .split("")
+        .map((y) => arabicNumbers[parseInt(y)])
+        .join("");
 
     const arabicMonths = [
-        'يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو',
-        'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'
+        "يناير",
+        "فبراير",
+        "مارس",
+        "أبريل",
+        "مايو",
+        "يونيو",
+        "يوليو",
+        "أغسطس",
+        "سبتمبر",
+        "أكتوبر",
+        "نوفمبر",
+        "ديسمبر",
     ];
 
     return `${arabicDay} ${arabicMonths[month]} ${arabicYear}`;
@@ -29,10 +52,9 @@ const extractReadTimeMinutes = (readTimeText) => {
     if (!readTimeText) return null;
     const match = readTimeText.match(/(\d+)/);
     if (!match) return null;
-    const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+    const arabicNumbers = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
     return arabicNumbers[parseInt(match[1])] || null;
 };
-
 
 /* ---------------------- */
 /* Pagination Component   */
@@ -68,7 +90,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     return (
         <div className="pagination-container" dir="rtl">
             <div className="page-info">
-                صفحة <span className="current-page">{currentPage}</span> من <span className="total-pages">{totalPages}</span>
+                صفحة <span className="current-page">{currentPage}</span> من{" "}
+                <span className="total-pages">{totalPages}</span>
             </div>
 
             <div className="pagination">
@@ -81,10 +104,10 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
                     <FaChevronRight />
                 </button>
 
-                {pageNumbers.map(page => (
+                {pageNumbers.map((page) => (
                     <button
                         key={page}
-                        className={`pagination-btn ${page === currentPage ? 'active' : ''}`}
+                        className={`pagination-btn ${page === currentPage ? "active" : ""}`}
                         onClick={() => onPageChange(page)}
                     >
                         {page}
@@ -113,56 +136,75 @@ const PostCard = ({ post }) => (
             <div
                 className="post-image"
                 style={{
-                    backgroundImage: post.image ? `url(${post.image})` : `url('/placeholder.jpg')`,
+                    backgroundImage: post.image
+                        ? `url(${post.image})`
+                        : `url('/placeholder.jpg')`,
                 }}
             />
-            {post.category && <span className="post-category-badge">{post.category}</span>}
 
-            {(post.readTime || post.date) && (
-                <div className="post-card-header">
-                    <div className="post-time-date">
-                        {post.readTime && (
-                            <span className="post-read-time">
-                                <FaRegClock className="read-time-icon" />
-                                <span style={{ margin: '0 6px' }}>
-                                    {extractReadTimeMinutes(post.readTime)} دقائق للقراءة
+            <div className="post-content-wrapper">
+                {post.category && (
+                    <span className="post-category-badge">{post.category}</span>
+                )}
+
+                {(post.readTime || post.date) && (
+                    <div className="post-card-header">
+                        <div className="post-time-date">
+                            {post.readTime && (
+                                <span className="post-read-time">
+                                    <FaRegClock className="read-time-icon" />
+                                    <span style={{ margin: "0 6px" }}>
+                                        {extractReadTimeMinutes(post.readTime)} دقائق للقراءة
+                                    </span>
                                 </span>
-                            </span>
-                        )}
-                        {post.readTime && post.date && <span className="post-separator">•</span>}
-                        {post.date && <span className="post-date">{formatDateArabic(post.date)}</span>}
-                    </div>
-                </div>
-            )}
-
-            <div className="post-card-content">
-                {post.title && <h3 className="post-title"><Link to={`/blog/${post.slug}`}>{post.title}</Link></h3>}
-                {post.excerpt && <p className="post-excerpt">{post.excerpt}</p>}
-            </div>
-
-            {post.author && (
-                <Link to={`/blog/${post.slug}`} className="post-author-link">
-                    <div className="post-author">
-                        <div className="author-info">
-                            {post.author.avatar && (
-                                <div
-                                    className="author-avatar"
-                                    style={{
-                                        backgroundImage: `url(${post.author.avatar})`,
-                                        backgroundSize: 'cover',
-                                        backgroundPosition: 'center'
-                                    }}
-                                />
                             )}
-                            <div className="author-details">
-                                {post.author.name && <h4 className="author-name">{post.author.name}</h4>}
-                                {post.author.role && <p className="author-role">{post.author.role}</p>}
-                            </div>
-                            <span className="author-arrow">&gt;</span>
+                            {post.readTime && post.date && (
+                                <span className="post-separator">•</span>
+                            )}
+                            {post.date && (
+                                <span className="post-date">{formatDateArabic(post.date)}</span>
+                            )}
                         </div>
                     </div>
-                </Link>
-            )}
+                )}
+
+                <div className="post-card-content">
+                    {post.title && (
+                        <h3 className="post-title">
+                            <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                        </h3>
+                    )}
+                    {post.excerpt && <p className="post-excerpt">{post.excerpt}</p>}
+                </div>
+
+                {post.author && (
+                    <Link to={`/blog/${post.slug}`} className="post-author-link">
+                        <div className="post-author">
+                            <div className="author-info">
+                                {post.author.avatar && (
+                                    <div
+                                        className="author-avatar"
+                                        style={{
+                                            backgroundImage: `url(${post.author.avatar})`,
+                                            backgroundSize: "cover",
+                                            backgroundPosition: "center",
+                                        }}
+                                    />
+                                )}
+                                <div className="author-details">
+                                    {post.author.name && (
+                                        <h4 className="author-name">{post.author.name}</h4>
+                                    )}
+                                    {post.author.role && (
+                                        <p className="author-role">{post.author.role}</p>
+                                    )}
+                                </div>
+                                <span className="author-arrow">&gt;</span>
+                            </div>
+                        </div>
+                    </Link>
+                )}
+            </div>
         </article>
     </Link>
 );
@@ -170,10 +212,10 @@ const PostCard = ({ post }) => (
 /* ---------------------- */
 /* Main Component         */
 /* ---------------------- */
-const LatestPosts = ({ posts = [], viewMode = 'grid' }) => {
+const LatestPosts = ({ posts = [], viewMode = "grid" }) => {
     const navigate = useNavigate();
     const location = useLocation();
-    const isBlogsPage = location.pathname === '/blogs';
+    const isBlogsPage = location.pathname === "/blogs";
 
     const [currentPage, setCurrentPage] = useState(1);
     const postsPerPage = isBlogsPage ? 9 : 3;
@@ -186,7 +228,7 @@ const LatestPosts = ({ posts = [], viewMode = 'grid' }) => {
     const handlePageChange = (pageNumber) => {
         if (pageNumber >= 1 && pageNumber <= totalPages) {
             setCurrentPage(pageNumber);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
     };
 
@@ -195,9 +237,7 @@ const LatestPosts = ({ posts = [], viewMode = 'grid' }) => {
             <div className="container">
                 {!isBlogsPage && <HomeHeader navigate={navigate} />}
 
-                {isBlogsPage && (
-                    <BlogsHeader postsCount={posts.length} />
-                )}
+                {isBlogsPage && <BlogsHeader postsCount={posts.length} />}
 
                 {currentPosts.length === 0 ? (
                     <div className="no-posts-message text-center py-10">
@@ -205,8 +245,12 @@ const LatestPosts = ({ posts = [], viewMode = 'grid' }) => {
                         <p>جرب فئة أخرى أو ابحث بكلمات مختلفة</p>
                     </div>
                 ) : (
-                    <div className={`posts-grid ${isBlogsPage ? 'blogs-grid-layout' : ''} ${viewMode === 'list' ? 'list-view' : ''}`}>
-                        {currentPosts.map(post => <PostCard key={post.id} post={post} />)}
+                    <div
+                        className={`posts-grid ${isBlogsPage ? "blogs-grid-layout" : ""} ${viewMode === "list" ? "list-view" : ""}`}
+                    >
+                        {currentPosts.map((post) => (
+                            <PostCard key={post.id} post={post} />
+                        ))}
                     </div>
                 )}
 
@@ -228,7 +272,10 @@ const LatestPosts = ({ posts = [], viewMode = 'grid' }) => {
 const HomeHeader = ({ navigate }) => (
     <div className="section-header text-end">
         <span className="hero-badge">
-            <span className="loading-dots"><span></span><span></span></span>
+            <span className="loading-dots">
+                <span></span>
+                <span></span>
+            </span>
             الاحدث
         </span>
         <h1 className="section-title">أحدث المقالات</h1>
@@ -236,7 +283,7 @@ const HomeHeader = ({ navigate }) => (
         <div className="subtitle-row">
             <p className="section-subtitle">محتوى جديد طازج من المطبعة</p>
             <div className="arrow-buttons">
-                <button className="arrow-btn" onClick={() => navigate('/blogs')}>
+                <button className="arrow-btn" onClick={() => navigate("/blogs")}>
                     عرض جميع المقالات
                     <FaArrowLeft />
                 </button>
@@ -248,9 +295,7 @@ const HomeHeader = ({ navigate }) => (
 const BlogsHeader = ({ postsCount }) => (
     <div className="blogs-page-header">
         <div className="blogs-meta">
-            <span className="total-posts-count">
-                عرض {postsCount} مقالة
-            </span>
+            <span className="total-posts-count">عرض {postsCount} مقالة</span>
         </div>
     </div>
 );
