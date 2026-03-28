@@ -1,4 +1,4 @@
-# 🖼️ Adasa - Photography Blog
+ 🖼️ Adasa - Photography Blog
 
 [![React](https://img.shields.io/badge/React-19.0-blue?style=for-the-badge&logo=react)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-7.2-green?style=for-the-badge&logo=vite)](https://vitejs.dev/)
@@ -8,10 +8,10 @@
 > **Modern Professional Photography Blog Platform** 🚀  
 > Fully responsive blog focused on photography education, gear reviews, lighting tips, portrait & landscape photography.
 
-<div align=\"center\">
-  <img src=\"https://img.shields.io/badge/Dark%20Theme-%230F0F0F-black?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEwLjU0IDQuMDM3QzEwLjU0IDMuNzYzIDEwLjQ3MSAzLjUwMiAxMC4zNjMgMy4zMzJDMTAgMy4xNjEgOS45NzEgMi45OTYgOS44MzEgMi44MzFDOS42OSAyLjY2NiA5LjUyMiAyLjYzOCA5LjM1NyAyLjYzOEM5LjE5MiAyLjYzOCA5LjAyNCAyLjY2NiA4Ljg4OSAyLjgzMUM4Ljg1NSAzLjAwMiA4LjgyMiAzLjE4MyA4LjgyMiAzLjM2N0M4LjgyMiA0LjE0NCA5LjAyNCA0LjM0MiA5LjIwMyA0LjM0MkM5LjM4MiA0LjM0MiA5LjU2MSA0LjE0NCA5LjU2MSAzLjM2N0MxMC4wMDMgMy4zNjcgMTAuMjgyIDMuMzY3IDEwLjUyIDIuOTMzQzEwLjUyIDIuNzQ5IDEwLjUyIDIuNTY1IDEwLjQ3MSAyLjM4MUMxMC40NzEgMi4xOTYgMTAuMjgyIDIgMTAgMkMxMC4wNjEgMiAxMC4wNjEgMiAwOS44MzEgMi4xNjZDOS42OTIgMi4zMzIgOS42OTIgMi41MDcgOS42OTIgMi42ODNDOS42OTIgMy4yMTcgOS42OTMgMy43NTIgOS42OTMgNC4yODVDOS42OTMgNC44MTggOS42OTMgNS4zNSA5LjM1NyA1Ljg4MkM5LjAyNCA2LjQxMyA4LjQ4NiA2Ljk0NCA3Ljk0NCA3LjQ3NUM3LjQwMyA4LjAwNyA2Ljg3MiA4LjUzOCA2LjM0MSA5LjA3MkM1LjgwOSA5LjYwMyA1LjI3OCA5LjEzMyA0Ljc0NiA4LjYwMUM0LjIxNSA4LjA2OSAzLjY4NCA3LjUzOCA0LjIxNSA3LjAwNkM0LjM3NCA2Ljg0NyA0LjUzOSA2LjY5MyA0LjcwNCA2LjUzOUM0Ljg2OSA2LjM4NSA1LjAzNCA2LjIzMSA1LjIwMyA2LjA3MkM1LjM3MiA1LjkxNCA1LjU0MSA1Ljg0MyA1LjcxIDUuNzc0QzUuODc5IDUuNjA1IDYuMDQ4IDUuMDM2IDYuMjE3IDQuNDY4QzYuMzg2IDMuODk5IDYuNTU1IDMuMzMyIDYuNzI0IDIuNzY0QzYuODkzIDIuMTk1IDcuMDYyIDEuNjI3IDcuMjM1IDEuMDU4QzcuNDA0IDAuNDg5IDcuNTczIDAuMDkxIDcuNzQyIC0wLjM0N0M3LjkxMSAtMC43ODQgOC4wOCAtMS4yMjEgOC4yNSAtMS42NTZDNS44NDIgLTAuMjAzIDkuNDM0IDAuNTM0IDkuOTcyIDEuMDcyQzEwLjUwOSAxLjYwMSA5LjUxNCAyLjYwMiA5LjUxNCAzLjM2N0MxMC4wMzUgMy4zNjcgMTAuMjg0IDMuMzY3IDEwLjUyIDIuOTMzWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+\"/>
-  <br><br>
-  <img alt=\"Demo\" src=\"https://via.placeholder.com/1200x400/0F0F0F/ff7a00?text=Adasa+-+Photography+Blog\" width=\"100%\">
+<div align="center">
+  <a href="https://adasa-blog-one.vercel.app/" target="_blank">
+    <img alt="Live Demo" src="https://img.shields.io/badge/Live_Demo-ff7a00?style=for-the-badge&logo=vercel&logoColor=white"/>
+  </a>
 </div>
 
 ## 📖 Table of Contents
@@ -28,7 +28,7 @@
 - [🤝 Contributing](#contributing)
 - [📄 License](#license)
 
-## Project Overview {#project-overview}
+## Project Overview
 
 **Adasa** is a modern, fully responsive photography blog platform focused on:
 
@@ -39,7 +39,7 @@
 
 Built with React + Vite for blazing fast performance, using static data from `blogs.json` (25+ articles).
 
-## ✨ Key Features {#key-features}
+## ✨ Key Features 
 
 ### ✅ Responsive Design
 
@@ -78,7 +78,7 @@ Built with React + Vite for blazing fast performance, using static data from `bl
 - 📰 Newsletter subscription with localStorage persistence
 - 🔥 Featured/Selected articles section
 
-## 🛠️ Tech Stack {#tech-stack}
+## 🛠️ Tech Stack 
 
 | Category     | Technologies                                               |
 | ------------ | ---------------------------------------------------------- |
@@ -96,8 +96,7 @@ npm i react-router-dom bootstrap react-icons lucide-react
 npm i -D tailwindcss postcss autoprefixer
 ```
 
-## 📁 Project Structure {#project-structure}
-
+## 📁 Project Structure
 ```
 adasa-blog/
 ├── public/           # Static assets
@@ -112,7 +111,7 @@ adasa-blog/
 └── vite.config.js    # Vite config
 ```
 
-## 🎨 Design System {#design-system}
+## 🎨 Design System 
 
 ### Colors
 
@@ -137,7 +136,7 @@ adasa-blog/
 - Glassmorphism effects
 - Animations: fade-in, slide-up, pulse, shake, rotate
 
-## 📱 Responsive Features {#responsive-features}
+## 📱 Responsive Features 
 
 - **Mobile-first** approach
 - Horizontal scroll for categories on small screens
@@ -146,14 +145,12 @@ adasa-blog/
 - Sticky filter bar with scroll-to-top
 - Touch-friendly interactions
 
-## 🌐 Browser Support {#browser-support}
-
+## 🌐 Browser Support
 - Modern browsers: Chrome, Firefox, Safari, Edge
 - ✅ RTL language support
 - ✅ Touch-friendly interactions
 
-## 🚀 Quick Start {#quick-start}
-
+## 🚀 Quick Start 
 ```bash
 # Clone & Install
 git clone <your-repo> adasa-blog
@@ -170,13 +167,7 @@ npm run preview
 
 **Live Demo**: [https://adasa-blog-one.vercel.app/](https://adasa-blog-one.vercel.app/) or run `npm run dev` and open http://localhost:5173
 
-## 📸 Screenshots {#screenshots}
-
-| Home - Hero + Featured                                                    | Blogs - Grid/Filter                                                      | Article Details                                                                    |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
-| ![Home](https://via.placeholder.com/400x250/0F0F0F/ff7a00?text=Home+Hero) | ![Blogs](https://via.placeholder.com/400x250/111/ff7a00?text=Blogs+Grid) | ![Details](https://via.placeholder.com/400x250/1a1a1a/ff7a00?text=Article+Details) |
-
-## 🤝 Contributing {#contributing}
+## 🤝 Contributing 
 
 1. Fork the project
 2. Create feature branch (`blackboxai/feature-name`)
@@ -189,3 +180,4 @@ npm run preview
 ## 📄 License
 
 MIT License - see [LICENSE](LICENSE) © Adasa Photography Blog
+](https://adasa-blog-one.vercel.app/)
